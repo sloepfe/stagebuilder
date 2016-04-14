@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1>Welcome to StageBuilder V1.0</h1>
+            </div>
+
+            <div id="next">
+                <p>
+                <h2>What's up?</h2>
+                <a href="{{ path('neues_Projekt') }}">Neues Projekt erstellen</a>
+                
+                </p>
+                        <p> 
+                            <h3>Projekt 1</h3>
+                           <a href="{{path('projekt_ansehen')}}"><img src ="http://tablon-de-anuncios-jefatura.wikispaces.com/file/view/1.png/240077419/1.png" alt ="projekt 1" style ="width: 304px; height: 228px;"></a>
+                        </p>
+                        <p> 
+                            <h3>Projekt 2</h3>
+                         <img src ="https://p15fitnessclub.files.wordpress.com/2012/05/zahl-2.png" alt ="projekt 2" style ="width: 304px; height: 228px;">
+                        </p>
+                        <p> 
+                            <h3>Projekt 3</h3>
+                        <img src ="data:image/png;base64,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" alt ="projekt 3" style ="width: 304px; height: 228px;">
+                        </p>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 21px; margin-bottom: 1em; }
+    p { margin: 0 0 1em 0; }
+    a { color: #0000F0; }
+    a:hover { text-decoration: none; }
+    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+    #container { padding: 2em; }
+    #welcome, #status { margin-bottom: 2em; }
+    #welcome h1 span { display: block; font-size: 75%; }
+    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
+    #icon-book { display: none; }
+
+    @media (min-width: 768px) {
+        #wrapper { width: 80%; margin: 2em auto; }
+        #icon-book { display: inline-block; }
+        #status a, #next a { display: block; }
+
+        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
+    }
+</style>
+{% endblock %}
+

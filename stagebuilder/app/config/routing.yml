@@ -1,3 +1,38 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+login:
+    path: /login
+    defaults: {_controller:AppBundle:Security:login}
+    
+
+    
+neues_Projekt:
+    path: /neuesProjekt
+    defaults: {_controller:AppBundle:NeuesProjekt:neuesProjekt}
+    
+neuer_Beitrag:
+    path: /neuerBeitrag
+    defaults: {_controller:AppBundle:NeuerBeitrag:neuerBeitrag}
+
+projekt_ansehen:
+    path: /projektAnsehen
+    defaults: {_controller:AppBundle:ProjektAnsehen:projektAnsehen}
+    
+beitrag_ansehen:
+    path: /beitragAnsehen
+    defaults: {_controller:AppBundle:BeitragAnsehen:beitragAnsehen}
+    
+user_registration:
+    path: /register
+    defaults: {_controller:AppBundle:Registration:register}
+    
+logout:
+    path: /logout
+    defaults: {_controller:AppBundle:Security:login}
+
+diashow:
+    path: /diashow
+    defaults: {_controller:AppBundle:Diashow:diashow}
+    
