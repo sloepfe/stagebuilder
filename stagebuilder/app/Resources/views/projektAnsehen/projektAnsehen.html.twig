@@ -9,7 +9,27 @@
             </div>
 
             <div id="next">
-                <a href="{{path('neuer_Beitrag')}}">Einen weiteren Beitrag erstellen</a>
+                          {% if app.user %}
+   <a href="{{path('neuer_Beitrag')}}">Einen weiteren Beitrag erstellen</a>
+   
+   <a href="{{path('diashow')}}">Projekt in Diashow ansehen</a>
+                
+                        <p> 
+                            <h3>Beitrag 1</h3>
+                            <a href = "{{path('beitrag_ansehen')}}"><img src ="http://www.the666.com/fotos/numero%201.jpg" alt ="Beitrag 1" style ="width: 304px; height: 228px;"></a>
+                        </p>
+                        
+                        <p> 
+                            <h3>Beitrag 2</h3>
+                        <img src ="http://www.kinder-malvorlagen.com/_thmbs/symbole-buchstaben-zahlen/zahl-2-zwei.gif" alt ="Beitrag 2 1" style ="width: 304px; height: 228px;">
+                        </p>
+                       
+            </div>
+
+        </div>
+    </div>
+    {% else %}
+
                 <a href="{{path('diashow')}}">Projekt in Diashow ansehen</a>
                 
                         <p> 
@@ -26,6 +46,8 @@
 
         </div>
     </div>
+                             {% endif %}
+
 {% endblock %}
 
 {% block stylesheets %}

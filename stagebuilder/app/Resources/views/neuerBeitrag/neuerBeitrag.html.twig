@@ -1,6 +1,7 @@
 
 {% extends 'base.html.twig' %}
 
+
 {% block body %}
     <div id="wrapper">
         <div id="container">
@@ -16,12 +17,37 @@
                 <h3>3 Bilder</h3>
                 <h3>Materialliste</h3>
 
-             
+              {% form_theme form 'bootstrap_3_layout.html.twig' %}
+{{ form_start(form) }}
+    {{ form_row(form.titel) }}
+    {{ form_row(form.ersteller) }}
+    {{ form_row(form.reihenfolge) }}
+    {{ form_row(form.dauer) }}
+    {{ form_row(form.startzeit) }}
+    {{ form_row(form.lied) }}
+    {{ form_row(form.materialliste) }}
+
+
+
+
+
+    <button type="submit">Neuer Beitrag erstellen!</button>
+{{ form_end(form) }}
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+
+<div class="alert alert-success">
+    {{ flashMessage }}
+</div>
+
+{% endfor %}
                         
             </div>
 
         </div>
     </div>
+
+
 {% endblock %}
 
 {% block stylesheets %}

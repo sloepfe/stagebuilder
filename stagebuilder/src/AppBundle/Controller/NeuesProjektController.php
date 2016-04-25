@@ -8,10 +8,21 @@
 
 namespace AppBundle\Controller;
 
+/*
+ *projekt und response nötig für doctrine 
+ */
+use AppBundle\Entity\Projekt;
+
+/*
+ * für formularerstellung
+ */
+use AppBundle\Form\ProjektType;
+/*
+ * rest für controller
+ */
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\Security\Core\SecurityContext;
 /**
  * Description of NeuesProjektController
  *
@@ -23,9 +34,27 @@ class NeuesProjektController extends Controller{
      * @Route("/neuesProjekt", name="neues_Projekt")
      */
     
-    public function NeuesProjektAction()
+    public function NeuesProjektAction(Request $request)
     {
-        return $this -> render('neuesProjekt/neuesProjekt.html.twig');
+        // build the form
+        $projekt = new Projekt();
+        $form = $this->createForm(ProjektType::class, $projekt);
+        
+        //handle the submit
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form ->isValid()){
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($projekt);
+            $em->flush();
+            
+            $this->get('session')->getFlashBag()->add('project','Neues Projekt erstellt');
+            
+            return $this->redirectToRoute("neuer_Beitrag");
+        }
+        
+        return $this -> render('neuesProjekt/neuesProjekt.html.twig',array('form' => $form->createView()));
+        
         
     }
     

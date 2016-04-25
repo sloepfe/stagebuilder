@@ -1,3 +1,5 @@
+
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -10,14 +12,27 @@
             <div id="next">
                 <p>
                 <h2>Was wird benötigt?</h2>
-                <h3>Name</h3>
-                <h3>Metadaten</h3>
-                <h3>mindestens einen Beitrag</h3>
-                
-                <a href="{{ path('neuer_Beitrag') }}">Neuer Beitrag erstellen</a>
+                <h3>Titel</h3>
+                <h3>Verantwortliche Person</h3>
+                <h3>Datum</h3>
+                <h3>Einen oder mehrere Beiträge</h3>
 
+                {% form_theme form 'bootstrap_3_layout.html.twig' %}
+{{ form_start(form) }}
+    {{ form_row(form.titel) }}
+    {{ form_row(form.ersteller) }}
+    {{ form_row(form.datum) }}
+
+    <button type="submit">Neues Projekt erstellen!</button>
+{{ form_end(form) }}
              
-                        
+                   {% for flashMessage in app.session.flashbag.get('project') %}
+
+<div class="alert alert-success">
+    {{ flashMessage }}
+</div>
+
+{% endfor %}     
             </div>
 
         </div>
