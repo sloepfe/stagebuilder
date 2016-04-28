@@ -3,51 +3,55 @@
 
 {% block body %}
     <div id="wrapper">
-        <div id="container">
+        <div id="container">            
             <div id="welcome">
-                <h1>Projekt 1</h1>
+                <h1>Projektansicht: </h1>
             </div>
 
-            <div id="next">
-                          {% if app.user %}
-   <a href="{{path('neuer_Beitrag')}}">Einen weiteren Beitrag erstellen</a>
-   
-   <a href="{{path('diashow')}}">Projekt in Diashow ansehen</a>
-                
-                        <p> 
-                            <h3>Beitrag 1</h3>
-                            <a href = "{{path('beitrag_ansehen')}}"><img src ="http://www.the666.com/fotos/numero%201.jpg" alt ="Beitrag 1" style ="width: 304px; height: 228px;"></a>
-                        </p>
+            
+                    {% if app.user %}
+                            <div id="usercontent">
+                              
+                              <p>
+                                <a href="{{path('neuer_Beitrag')}}">Einen weiteren Beitrag erstellen</a>
+                              </p>
+                              <p>
+                                <a href="{{path('diashow')}}">Projekt in Diashow ansehen</a>
+                              </p>
                         
-                        <p> 
-                            <h3>Beitrag 2</h3>
-                        <img src ="http://www.kinder-malvorlagen.com/_thmbs/symbole-buchstaben-zahlen/zahl-2-zwei.gif" alt ="Beitrag 2 1" style ="width: 304px; height: 228px;">
-                        </p>
+                            <div id="beitragsliste">
+                            <ol>
+                            {% for beitrag in beitraege %}
+                                <li><a href="{{path('projekt_ansehen')}}"><h4>{{ beitrag.titel }}</h4></a></li>
+                                <ul>
+                                <li>ID:{{ beitrag.id }}</li>
+                                <li>Verantwortliche Person: {{ beitrag.ersteller }}</li>
+                                <li>Reihenfolge: {{ beitrag.reihenfolge }}</li>
+                                <li>Dauer: {{ beitrag.dauer }}</li>
+                                <li>Startzeit: {{ beitrag.startzeit }}</li>
+                                <li>Lied: {{ beitrag.Lied }}</li>     
+                                <li>Material: {{ beitrag.materialliste }}</li>
+
+
+                                </ul>
+                                {% endfor %}
+                            </ol>
+                        </div>
+                            </div>
+
+        
+                    {% else %}
+                              <p>
+                                 <a href="{{path('diashow')}}">Projekt in Diashow ansehen</a>
+                              </p>
+
                        
-            </div>
 
         </div>
     </div>
-    {% else %}
-
-                <a href="{{path('diashow')}}">Projekt in Diashow ansehen</a>
-                
-                        <p> 
-                            <h3>Beitrag 1</h3>
-                            <a href = "{{path('beitrag_ansehen')}}"><img src ="http://www.the666.com/fotos/numero%201.jpg" alt ="Beitrag 1" style ="width: 304px; height: 228px;"></a>
-                        </p>
-                        
-                        <p> 
-                            <h3>Beitrag 2</h3>
-                        <img src ="http://www.kinder-malvorlagen.com/_thmbs/symbole-buchstaben-zahlen/zahl-2-zwei.gif" alt ="Beitrag 2 1" style ="width: 304px; height: 228px;">
-                        </p>
-                       
-            </div>
-
-        </div>
+                    {% endif %}
+</div>
     </div>
-                             {% endif %}
-
 {% endblock %}
 
 {% block stylesheets %}

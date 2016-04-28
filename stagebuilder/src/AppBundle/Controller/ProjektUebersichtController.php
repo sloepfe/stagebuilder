@@ -26,8 +26,12 @@ class ProjektUebersichtController extends Controller{
     {
         
 
+         $projekte = $this->getDoctrine()
+        ->getRepository('AppBundle:Projekt')
+        ->findAll();
+         
         // replace this example code with whatever you need
-        return $this->render('homepage/projektUebersicht.html.twig');
+        return $this->render('homepage/projektUebersicht.html.twig', array('projekte' => $projekte));
         
         
         

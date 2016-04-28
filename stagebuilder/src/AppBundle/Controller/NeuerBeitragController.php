@@ -46,7 +46,7 @@ class NeuerBeitragController extends Controller{
             $em->persist($beitrag);
             $em->flush();
             
-            $this->get('session')->getFlashBag()->add('notice','Neuer Beitrag erstellt');
+            $this->get('session')->getFlashBag()->add('notice','Neuer Beitrag erstellt');   
             
             return $this->redirectToRoute("neuer_Beitrag");
         }
