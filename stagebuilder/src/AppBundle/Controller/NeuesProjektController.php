@@ -44,11 +44,30 @@ class NeuesProjektController extends Controller{
         $form->handleRequest($request);
         if($form->isSubmitted() && $form ->isValid()){
             
+            // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $projekt->getBrochure();
+
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            // Move the file to the directory where brochures are stored
+            $brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads/brochures';
+            $file->move($brochuresDir, $fileName);
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $projekt->setBrochure($fileName);
+
+            // ... persist the $product variable or any other work
+
+            
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($projekt);
             $em->flush();
-            
-            $this->get('session')->getFlashBag()->add('project','Neues Projekt erstellt');
+            //return $this->redirect($this->generateUrl('app_product_list'));
+            //$this->get('session')->getFlashBag()->add('project','Neues Projekt erstellt');
             
             return $this->redirectToRoute("neuer_Beitrag");
         }

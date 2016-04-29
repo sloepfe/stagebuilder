@@ -34,6 +34,8 @@
                                 <li>ID:{{ projekt.id }}</li>
                                 <li>Verantwortliche Person: {{ projekt.ersteller }}</li>
                                 <li>Erstellungsdatum: {{ projekt.datum }}</li>
+                                <li><a href="{{ asset('uploads/brochures/' ~ projekt.brochure) }}">View brochure (PDF)</a></li>
+                              
                                 </ul>
                                 {% endfor %}
                             </ol>
@@ -53,6 +55,7 @@
                                 <li>ID:{{ projekt.id }}</li>
                                 <li>Verantwortliche Person: {{ projekt.ersteller }}</li>
                                 <li>Erstellungsdatum: {{ projekt.datum }}</li>
+                                <li><a href="{{ asset('brochures' ~ projekt.brochure) }}">View brochure (PDF)</a></li>
                                 </ul>
                                 {% endfor %}
                             </ol>

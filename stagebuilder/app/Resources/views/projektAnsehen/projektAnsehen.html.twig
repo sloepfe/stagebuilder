@@ -44,6 +44,28 @@
                               <p>
                                  <a href="{{path('diashow')}}">Projekt in Diashow ansehen</a>
                               </p>
+                              
+                              
+      
+                              
+                              <div id="beitragsliste">
+                            <ol>
+                            {% for beitrag in beitraege %}
+                                <li><a href="{{path('projekt_ansehen')}}"><h4>{{ beitrag.titel }}</h4></a></li>
+                                <ul>
+                                <li>ID:{{ beitrag.id }}</li>
+                                <li>Verantwortliche Person: {{ beitrag.ersteller }}</li>
+                                <li>Reihenfolge: {{ beitrag.reihenfolge }}</li>
+                                <li>Dauer: {{ beitrag.dauer }}</li>
+                                <li>Startzeit: {{ beitrag.startzeit }}</li>
+                                <li>Lied: {{ beitrag.Lied }}</li>     
+                                <li>Material: {{ beitrag.materialliste }}</li>
+
+
+                                </ul>
+                                {% endfor %}
+                            </ol>
+                        </div>
 
                        
 

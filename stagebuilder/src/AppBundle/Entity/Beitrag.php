@@ -64,6 +64,14 @@ class Beitrag {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * Get id
