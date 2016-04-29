@@ -31,6 +31,11 @@
                                 <li>Startzeit: {{ beitrag.startzeit }}</li>
                                 <li>Lied: {{ beitrag.Lied }}</li>     
                                 <li>Material: {{ beitrag.materialliste }}</li>
+                                
+                                <img src="{{ asset('uploads/brochures/'~beitrag.frontpic) }}" width = "300px" heigth = "300px"></img>
+                                <img src="{{ asset('uploads/brochures/'~beitrag.leftsidepic) }}" width = "300px" heigth = "300px"></img>
+                                <img src="{{ asset('uploads/brochures/'~beitrag.rightsidepic) }}" width = "300px" heigth = "300px"></img>
+
 
 
                                 </ul>

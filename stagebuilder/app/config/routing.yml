@@ -33,6 +33,3 @@ diashow:
     path: /diashow
     defaults: {_controller:AppBundle:Diashow:diashow}
     
-brochures:
-    path: /../../../../web/uploads/brochures/
-    defaults: {_controller:AppBundle:ProjektAnsehen:projektAnsehen}

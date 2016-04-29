@@ -24,7 +24,7 @@ class ProjektType extends AbstractType
             ->add('ersteller', TextType::class)
             ->add('datum', TextType::class)
                 
-            ->add('brochure', FileType::class, array('label' => 'Brochure (PDF file)'));
+            ->add('brochure', FileType::class, array('label' => 'Image (JPG-File'));
         
     } 
     

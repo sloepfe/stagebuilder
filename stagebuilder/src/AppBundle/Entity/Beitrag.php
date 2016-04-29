@@ -9,6 +9,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity
@@ -22,6 +24,12 @@ class Beitrag {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Projekt", inversedBy="articles")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+     */
+    private $project;
     
     
      /**
@@ -61,6 +69,91 @@ class Beitrag {
      * @ORM\Column(type="text")
      */
     private $materialliste;
+    
+    
+    
+    
+    
+    
+    /**
+     * @ORM\Column(type="string", length=100)
+     *
+     * @Assert\NotBlank(message="Please, upload the Frontimage as a jpg file.")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    private $frontpic;
+    
+    
+/**
+     * Get brochure
+     *
+     * @return string
+     */
+    public function getFrontpic()
+    {
+        return $this->frontpic;
+    }
+
+    public function setFrontpic($frontpic)
+    {
+        $this->frontpic = $frontpic;
+
+        return $this;
+    }
+    
+    
+    /**
+     * @ORM\Column(type="string", length=100)
+     *
+     * @Assert\NotBlank(message="Please, upload the Leftsideimage as a jpg file.")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    private $leftsidepic;
+    
+    
+/**
+     * Get brochure
+     *
+     * @return string
+     */
+    public function getLeftsidepic()
+    {
+        return $this->leftsidepic;
+    }
+
+    public function setLeftsidepic($leftsidepic)
+    {
+        $this->leftsidepic = $leftsidepic;
+
+        return $this;
+    }
+    
+     /**
+     * @ORM\Column(type="string", length=100)
+     *
+     * @Assert\NotBlank(message="Please, upload the Rightsideimage as a jpg file.")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    private $rightsidepic;
+    
+    
+/**
+     * Get brochure
+     *
+     * @return string
+     */
+    public function getRightsidepic()
+    {
+        return $this->rightsidepic;
+    }
+
+    public function setRightsidepic($rightsidepic)
+    {
+        $this->rightsidepic = $rightsidepic;
+
+        return $this;
+    }
+    
     
     
     
@@ -249,5 +342,29 @@ class Beitrag {
     public function getMaterialliste()
     {
         return $this->materialliste;
+    }
+
+    /**
+     * Set project
+     *
+     * @param \AppBundle\Entity\Projekt $project
+     *
+     * @return Beitrag
+     */
+    public function setProject(\AppBundle\Entity\Projekt $project = null)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return \AppBundle\Entity\Projekt
+     */
+    public function getProject()
+    {
+        return $this->project;
     }
 }

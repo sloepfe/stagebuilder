@@ -42,6 +42,69 @@ class NeuerBeitragController extends Controller{
         $form->handleRequest($request);
         if($form->isSubmitted() && $form ->isValid()){
             
+            
+            
+              // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $beitrag->getFrontpic();
+
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            // Move the file to the directory where brochures are stored
+            $brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads/brochures';
+            $file->move($brochuresDir, $fileName);
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $beitrag->setFrontpic($fileName);
+
+            // ... persist the $product variable or any other work    
+            
+            
+              // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $beitrag->getLeftsidepic();
+
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            // Move the file to the directory where brochures are stored
+            $brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads/brochures';
+            $file->move($brochuresDir, $fileName);
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $beitrag->setLeftsidepic($fileName);
+
+            // ... persist the $product variable or any other work   
+            
+            
+            
+              // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $beitrag->getRightsidepic();
+
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            // Move the file to the directory where brochures are stored
+            $brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads/brochures';
+            $file->move($brochuresDir, $fileName);
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $beitrag->setRightsidepic($fileName);
+
+            // ... persist the $product variable or any other work   
+            
+            
+            
+            
+          
+            
+            
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($beitrag);
             $em->flush();

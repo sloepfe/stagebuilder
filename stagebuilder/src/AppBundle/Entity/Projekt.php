@@ -44,20 +44,35 @@ class Projekt {
     private $datum;
     
     
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Beitrag", mappedBy="project")
+     */
+    //private $articles;
     
+    
+    /*public function __construct() {
+        $this->articles = new ArrayCollection();
+    } */
     
     
     
     
     
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=100)
      *
-     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
-     * @Assert\File(mimeTypes={ "application/pdf" })
+     * @Assert\NotBlank(message="Please, upload the image brochure as a jpg file.")
+     * @Assert\File(mimeTypes={ "image/jpeg" })
      */
     private $brochure;
-
+    
+    
+/**
+     * Get brochure
+     *
+     * @return string
+     */
     public function getBrochure()
     {
         return $this->brochure;
@@ -158,5 +173,39 @@ class Projekt {
     public function getDatum()
     {
         return $this->datum;
+    }
+
+    /**
+     * Add article
+     *
+     * @param \AppBundle\Entity\Beitrag $article
+     *
+     * @return Projekt
+     */
+    public function addArticle(\AppBundle\Entity\Beitrag $article)
+    {
+        $this->articles[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article
+     *
+     * @param \AppBundle\Entity\Beitrag $article
+     */
+    public function removeArticle(\AppBundle\Entity\Beitrag $article)
+    {
+        $this->articles->removeElement($article);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 }

@@ -11,10 +11,10 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 
 /**
  * Description of BeitragType
@@ -32,7 +32,11 @@ class BeitragType extends AbstractType{
             ->add('dauer', TextType::class)
             ->add('startzeit', TextType::class)
             ->add('lied', TextType::class)
-            ->add('materialliste',TextType::class);
+            ->add('materialliste',TextType::class)
+        
+        ->add('frontpic', FileType::class, array('label' => 'Front Bild (JPG-File'))
+        ->add('leftsidepic', FileType::class, array('label' => 'Linke Seite (JPG-File'))
+        ->add('rightsidepic', FileType::class, array('label' => 'Rechte Seite (JPG-File'));
     }
 
     public function configureOptions(OptionsResolver $resolver)
