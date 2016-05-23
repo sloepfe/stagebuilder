@@ -1,0 +1,14 @@
+{
+  "name": "stagebuilder",
+  "homepage": "https://github.com/sloepfe/stagebuilder",
+  "authors": [
+    "Samuel Loepfe <sloepfe@gmx.ch>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}

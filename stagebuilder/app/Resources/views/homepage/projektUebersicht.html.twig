@@ -1,70 +1,92 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <p>
-                <h1>Welcome to StageBuilder V1.0</h1>
-                <a href="http://www.stvkirchberg.ch"><img src ="https://yt3.ggpht.com/-CRlPbqWIHoE/AAAAAAAAAAI/AAAAAAAAAAA/P0TdTdhud9s/s900-c-k-no-mo-rj-c0xffffff/photo.jpg" alt ="stvk" style ="width: 150px; height: 150px;"></a>              
-                </p>
-            </div>
-            
-             {% if app.user %}
-    <div id="logginlink">
-        <p>
-                                <h2>Projektübersicht</h2>
+    {% if app.user %}
+    <div id =" uebersichtText">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          
+            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>
+            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
+            <a class="navbar-brand" href="{{ path('logout') }}">Logout</a>
 
-                <a href="{{ path('neues_Projekt') }}">Neues Projekt erstellen</a>
-        </p>
-
-                <div id="next">
-                
-                
-                        <p> 
-                            <h3>Projekte</h3>
-                          <!-- <a href="{{path('projekt_ansehen')}}"><img src ="http://tablon-de-anuncios-jefatura.wikispaces.com/file/view/1.png/240077419/1.png" alt ="projekt 1" style ="width: 304px; height: 228px;"></a>-->
-                        </p>
-                        
-                        <div id="projektliste">
-                            <ol>
-                            {% for projekt in projekte %}
-                                <li><a href="{{path('projekt_ansehen')}}"><h4>{{ projekt.titel }}</h4></a></li>
-                                <ul>
-                                <li>ID:{{ projekt.id }}</li>
-                                <li>Verantwortliche Person: {{ projekt.ersteller }}</li>
-                                <li>Erstellungsdatum: {{ projekt.datum }}</li>
-                                <img src="{{ asset('uploads/brochures/'~projekt.brochure) }}" width = "300px" heigth = "300px"></img>
-                              
-                                </ul>
-                                {% endfor %}
-                            </ol>
-                        </div>
-                       
-            </div>
-                
-    </div>
- {% else %}
-                    <h2>Projektübersicht</h2>
-
-                        <div id="projektliste">
-                            <ol>
-                            {% for projekt in projekte %}
-                                <li><a href="{{path('projekt_ansehen')}}"><h4>{{ projekt.titel }}</h4></a></li>
-                                <ul>
-                                <li>ID:{{ projekt.id }}</li>
-                                <li>Verantwortliche Person: {{ projekt.ersteller }}</li>
-                                <li>Erstellungsdatum: {{ projekt.datum }}</li>
-                                <img src="{{ asset('uploads/brochures/'~projekt.brochure) }}" width = "300px" heigth = "300px"></img>
-                                </ul>
-                                {% endfor %}
-                            </ol>
-                        </div>
-
-            
-<a href="{{ path('login') }}">>>Login</a>
         </div>
+      </div>
+    </nav>
+    </div> 
+            
+    <div class="jumbotron container-fluid">
+
+    <div class="container container-fluid">
+        <h2>Kürzlich erstellte Projekte</h2>   
+        <a href="{{ path('neues_Projekt') }}"><h3> >> Neues Projekt erstellen << </h3></a>
+
     </div>
+        
+                        
+        <div id="projektliste" class="container">
+            <ol>    {% for projekt in projekte %}
+                <div class="container">
+                    <li>
+                        <a href="{{path('projekt_ansehen')}}"><h4>{{ projekt.titel }}</h4></a>
+                    </li>
+                </div>    
+                    <ul>
+                        <li>ID:{{ projekt.id }}</li>
+                        <li>Verantwortliche Person: {{ projekt.ersteller }}</li>
+                        <li>Erstellungsdatum: {{ projekt.datum }}</li>
+                        <img src="{{ asset('uploads/brochures/'~projekt.brochure) }}" width = "300px" heigth = "300px"></img>
+                    </ul>
+                {% endfor %}
+            </ol>
+        </div>
+                       
+    </div>
+       
+            
+            
+            
+            
+            
+            
+            
+ {% else %}
+     
+    <div id =" uebersichtText">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          
+            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>
+            <a class="navbar-brand" href="{{ path('login') }}">Login</a>          
+            <a class="navbar-brand" href="{{ path('user_registration') }}">Registrieren</a>
+            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
+
+        </div>
+      </div>
+    </nav>
+    </div> 
+         
+    <div class="jumbotron container-fluid">
+
+    <div class="container container-fluid">
+        <h2>Kürzlich erstellte Projekte</h2>   
+    </div>
+    <div id="projektliste" class="container">
+        <ol>    {% for projekt in projekte %}
+            <a href="{{path('projekt_ansehen')}}"><h4>{{ projekt.titel }}</h4></a>
+                    <ul>
+                        <li>ID:{{ projekt.id }}</li>
+                        <li>Verantwortliche Person: {{ projekt.ersteller }}</li>
+                        <li>Erstellungsdatum: {{ projekt.datum }}</li>
+                        <img src="{{ asset('uploads/brochures/'~projekt.brochure) }}" width = "300px" heigth = "300px"></img>
+                    </ul>
+                {% endfor %}
+        </ol>
+    </div>
+    </div>
+
  {% endif %}
 {% endblock %}
 
@@ -95,5 +117,16 @@
         .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
     }
 </style>
+{% endblock %}
+
+{% block footer %}
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+		  <div class="container">
+                      <p>
+                        <h4>All Rights reserved by SwissLink and STVKirchberg.ch <img width="25px" src="https://yt3.ggpht.com/-CRlPbqWIHoE/AAAAAAAAAAI/AAAAAAAAAAA/P0TdTdhud9s/s100-c-k-no-mo-rj-c0xffffff/photo.jpg"></h4>
+                      </p>
+		  </div>
+    </nav>  
+    
 {% endblock %}
 

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+    <div id =" welcomeText">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          
+            <a class="navbar-brand" href="{{ path('login') }}">Login</a>
+            <a class="navbar-brand" href="{{ path('user_registration') }}">Registrieren</a>
+            <a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a>          
+            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
+            <a class="navbar-brand" href="{{ path('logout') }}">Logout</a>
+        </div>
+      </div>
+    </nav>
+    </div>
+    
+    <div class="jumbotron container-fluid">
+        
+          
+       <div class="container">
+       <h1>Willkommen zu StageBuilder, einem Service des STV Kirchberg!</h1>
+          
+	<h2>Planen Sie einfach und schnell die Bühnenaufstellungen Ihres Events!</h2>
+        <p></p>
+        <p>Um neue Projekte anlegen zu können, müssen Sie sich anmelden.</p>
+        <p>Um bestehende Projekte anzusehen, benötigen Sie keinen Login.</p>
+      </div>
+   
+    </div>
+    
+    
+    
+    
+    <div id="welcomeFoto" class="container">
+        <img src="http://stvkirchberg.ch/public/.imaging/stk/pop/gallery-zoom/dms/stvkirchberg/galerien/2015/fotos_turnerabend_2015/Turnerabend-2015-Fotos/IMG_7171/document/IMG_7171.jpg"></img>
+    </div>
+    
+    
+    
+    
+   
+    
+    
+    
+     
+    
+{% endblock %}
+

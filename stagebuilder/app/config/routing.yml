@@ -1,11 +1,24 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    
+welcome:
+    path: /
+    defaults: {_controller:AppBundle:Welcome:welcome}
+       
 
 login:
     path: /login
     defaults: {_controller:AppBundle:Security:login}
     
+logout:
+    path: /logout
+    
+
+
+projekt_uebersicht:
+    path: /projektUebersicht
+    defaults: {_controller:AppBundle:ProjektUebersicht:projektUebersicht}
 
     
 neues_Projekt:

@@ -4,10 +4,22 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet"
+              href="{{asset('bootstrap/bootstrap/dist/css/bootstrap.min.css')}}" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+        {% block footer %}{% endblock %}
     </body>
+    <footer>
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+		  <div class="container">
+                      <p>
+                        <h4>All Rights reserved by SwissLink and STVKirchberg.ch <img width="25px" src="https://yt3.ggpht.com/-CRlPbqWIHoE/AAAAAAAAAAI/AAAAAAAAAAA/P0TdTdhud9s/s100-c-k-no-mo-rj-c0xffffff/photo.jpg"></h4>
+                      </p>
+		  </div>
+    </nav> 
+    </footer>
 </html>

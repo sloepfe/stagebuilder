@@ -3,9 +3,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
+    
+    
+    <div id =" welcomeText">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          
+            
+            <a class="navbar-brand">Diashow</a>
+            <a class="navbar-brand" href="{{ path('welcome') }}">>>Welcome</a>
+               
+        </div>
+      </div>
+    </nav>
+    </div>
+    
+    
+
                 <h1>Diashow</h1>
             </div>
 
@@ -41,6 +56,15 @@
         .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
     }
 </style>
+{% endblock %}
+
+{% block footer %}
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+		  <div class="container">
+                      <p><h4>All Rights reserved by SwissLink and STVKirchberg.ch</h4></p>
+		  </div>
+    </nav>  
+    
 {% endblock %}
 
 

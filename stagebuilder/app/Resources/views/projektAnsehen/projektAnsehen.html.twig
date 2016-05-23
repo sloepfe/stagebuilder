@@ -2,27 +2,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">            
-            <div id="welcome">
-                <h1>Projektansicht: </h1>
+   <div id =" welcomeText">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          
+            <a class="navbar-brand" href="{{ path('login') }}">Login</a>
+            <a class="navbar-brand" href="{{ path('user_registration') }}">Registrieren</a>
+            <a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a>          
+            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
+        </div>
+      </div>
+    </nav>
+    </div>    
+            
+            <div class="jumbotron container-fluid">
+            <div class="container">
+                <h2>Projektansicht</h2>
             </div>
 
-            
+            <div class="container">
                     {% if app.user %}
                             <div id="usercontent">
                               
                               <p>
                                 <a href="{{path('neuer_Beitrag')}}">Einen weiteren Beitrag erstellen</a>
                               </p>
-                              <p>
-                                <a href="{{path('diashow')}}">Projekt in Diashow ansehen</a>
-                              </p>
+                              
+                             {% endif %}
                         
                             <div id="beitragsliste">
                             <ol>
                             {% for beitrag in beitraege %}
-                                <li><a href="{{path('projekt_ansehen')}}"><h4>{{ beitrag.titel }}</h4></a></li>
+                                <li><a href="{{path('beitrag_ansehen')}}"><h4>{{ beitrag.titel }}</h4></a></li>
                                 <ul>
                                 <li>ID:{{ beitrag.id }}</li>
                                 <li>Verantwortliche Person: {{ beitrag.ersteller }}</li>
@@ -45,40 +57,8 @@
                             </div>
 
         
-                    {% else %}
-                              <p>
-                                 <a href="{{path('diashow')}}">Projekt in Diashow ansehen</a>
-                              </p>
-                              
-                              
-      
-                              
-                              <div id="beitragsliste">
-                            <ol>
-                            {% for beitrag in beitraege %}
-                                <li><a href="{{path('projekt_ansehen')}}"><h4>{{ beitrag.titel }}</h4></a></li>
-                                <ul>
-                                <li>ID:{{ beitrag.id }}</li>
-                                <li>Verantwortliche Person: {{ beitrag.ersteller }}</li>
-                                <li>Reihenfolge: {{ beitrag.reihenfolge }}</li>
-                                <li>Dauer: {{ beitrag.dauer }}</li>
-                                <li>Startzeit: {{ beitrag.startzeit }}</li>
-                                <li>Lied: {{ beitrag.Lied }}</li>     
-                                <li>Material: {{ beitrag.materialliste }}</li>
-
-
-                                </ul>
-                                {% endfor %}
-                            </ol>
-                        </div>
-
-                       
-
+         </div>            
         </div>
-    </div>
-                    {% endif %}
-</div>
-    </div>
 {% endblock %}
 
 {% block stylesheets %}

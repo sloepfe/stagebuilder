@@ -45,8 +45,8 @@ security:
                 check_path : login
                 
             logout:       
-                path: /logout
-                target: /login
+                path:   /logout
+                target: /
             anonymous:    true
             
 

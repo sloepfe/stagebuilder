@@ -1,37 +1,44 @@
-
-
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
+   <div id =" welcomeText">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          
+            <a class="navbar-brand" href="{{ path('login') }}">Login</a>
+            <a class="navbar-brand" href="{{ path('user_registration') }}">Registrieren</a>
+            <a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a>          
+            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
+        </div>
+      </div>
+    </nav>
+    </div>
+            <div class="jumbotron container-fluid">
+        
+          
+       <div class="container">
                 <h1>Beitrag 1</h1>
             </div>
-
-            <div id="next">
-                
-                        
-                        <p><ul>
-                            <li>Name : Beitrag 1</li> 
-                            <li>Verantwortliche Person : Herr Benno Müller</li>
-                            <li>Reihenfolge : 5</li>
-                            <li>Musik : Move It</li>
-                            <li>Material : </li>
-                            <ul>
-                                <li>2 Barren</li>
-                                <li>3 dünne Matten</li>
-                                <li>1 Trampolin</li>
-                            </ul>
-                            <li>Länge : 3.41 min</li>
-
-                           </ul> 
+           <div class="container">
+                <ul>
+                    <li>Name : Beitrag 1</li> 
+                    <li>Verantwortliche Person : Herr Benno Müller</li>
+                    <li>Reihenfolge : 5</li>
+                    <li>Musik : Move It</li>
+                    <li>Material : </li>
+                    <ul>
+                        <li>2 Barren</li>
+                        <li>3 dünne Matten</li>
+                        <li>1 Trampolin</li>
+                    </ul>
+                        <li>Länge : 3.41 min</li>
+                </ul> 
                         
                        
             </div>
 
         </div>
-    </div>
 {% endblock %}
 
 {% block stylesheets %}
@@ -62,4 +69,6 @@
     }
 </style>
 {% endblock %}
+
+
 

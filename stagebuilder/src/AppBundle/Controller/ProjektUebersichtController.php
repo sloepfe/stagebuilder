@@ -19,10 +19,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ProjektUebersichtController extends Controller{
     /**
-     * @Route("/", name="homepage")
+     * @Route("/projekt_uebersicht", name="projektUbebersicht")
      */
     
-     public function indexAction(Request $request)
+     public function ProjektUebersichtAction(Request $request)
     {
         
 

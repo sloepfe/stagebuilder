@@ -1,32 +1,47 @@
-
-
-
-
-
-
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1>Register</h1>
+    <div id =" registerText">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          
+            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>
+            <a class="navbar-brand" href="{{ path('login') }}">Login</a>
+            <a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a>          
+            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
+        </div>
+      </div>
+    </nav>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <div id="register" class="jumbotron container-fluid">
+            
+            <div class="container">
+                <h3>Register</h3>
                 <h4>Diese Seite wird nicht zugänglich sein!</h4>
-            </div>
 
-            {% form_theme form 'bootstrap_3_layout.html.twig' %}
-{{ form_start(form) }}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(form) }}
     {{ form_row(form.username) }}
     {{ form_row(form.email) }}
     {{ form_row(form.password.first) }}
     {{ form_row(form.password.second) }}
-
-    <button type="submit">Register!</button>
-{{ form_end(form) }}
-            </div>
-
-        </div>
+    
+    <button type="submit" class="btn btn-success">Register!</button>
+    {{ form_end(form) }}
     </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block stylesheets %}
@@ -56,6 +71,17 @@
         .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
     }
 </style>
+{% endblock %}
+
+{% block footer %}
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+		  <div class="container">
+                      <p>
+                        <h4>All Rights reserved by SwissLink and STVKirchberg.ch <img width="25px" src="https://yt3.ggpht.com/-CRlPbqWIHoE/AAAAAAAAAAI/AAAAAAAAAAA/P0TdTdhud9s/s100-c-k-no-mo-rj-c0xffffff/photo.jpg"></h4>
+                      </p>
+		  </div>
+    </nav>  
+    
 {% endblock %}
 
 
