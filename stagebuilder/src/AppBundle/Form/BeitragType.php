@@ -34,9 +34,9 @@ class BeitragType extends AbstractType{
             ->add('lied', TextType::class)
             ->add('materialliste',TextType::class)
         
-        ->add('frontpic', FileType::class, array('label' => 'Front Bild (JPG-File'))
-        ->add('leftsidepic', FileType::class, array('label' => 'Linke Seite (JPG-File'))
-        ->add('rightsidepic', FileType::class, array('label' => 'Rechte Seite (JPG-File'));
+        ->add('frontpic', FileType::class, array('label' => 'Front Bild (JPG-File)'))
+        ->add('leftsidepic', FileType::class, array('label' => 'Linke Seite (JPG-File)'))
+        ->add('rightsidepic', FileType::class, array('label' => 'Rechte Seite (JPG-File)'));
     }
 
     public function configureOptions(OptionsResolver $resolver)

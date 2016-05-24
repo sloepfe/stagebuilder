@@ -1,24 +1,15 @@
-
 {% extends 'base.html.twig' %}
 
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
+   
+         <div class="jumbotron container-fluid">
+             
+             <div class="container">
                 <h1>Erstelle einen neuen Beitrag</h1>
-            </div>
 
-            <div id="next">
-                <p>
-                <h2>Was wird benötigt?</h2>
-                <h3>Name</h3>
-                <h3>Metadaten</h3>
-                <h3>3 Bilder</h3>
-                <h3>Materialliste</h3>
-
-              {% form_theme form 'bootstrap_3_layout.html.twig' %}
-{{ form_start(form) }}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(form) }}
     {{ form_row(form.titel) }}
     {{ form_row(form.ersteller) }}
     {{ form_row(form.reihenfolge) }}
@@ -37,7 +28,7 @@
 
 
 
-    <button type="submit">Neuer Beitrag erstellen!</button>
+    <button type="submit" class="btn btn-success">Neuer Beitrag erstellen!</button>
 {{ form_end(form) }}
 
 {% for flashMessage in app.session.flashbag.get('notice') %}
@@ -49,9 +40,8 @@
 {% endfor %}
                         
             </div>
-
-        </div>
-    </div>
+</div>
+   
 
 
 {% endblock %}
@@ -83,15 +73,6 @@
         .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
     }
 </style>
-{% endblock %}
-
-{% block footer %}
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-		  <div class="container">
-                      <p><h4>All Rights reserved by SwissLink and STVKirchberg.ch</h4></p>
-		  </div>
-    </nav>  
-    
 {% endblock %}
 
 

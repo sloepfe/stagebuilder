@@ -3,43 +3,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
+    
+        
+        <div class="jumbotron container-fluid">
+            
+            <div class="container">
                 <h1>Erstelle ein neues Projekt</h1>
-            </div>
 
-            <div id="next">
-                <p>
-                <h2>Was wird benötigt?</h2>
-                <h3>Titel</h3>
-                <h3>Verantwortliche Person</h3>
-                <h3>Datum</h3>
-                <h3>Einen oder mehrere Beiträge</h3>
-
-                {% form_theme form 'bootstrap_3_layout.html.twig' %}
-{{ form_start(form) }}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(form) }}
     {{ form_row(form.titel) }}
     {{ form_row(form.ersteller) }}
-    {{ form_row(form.datum) }}
-    
-    
+    {{ form_row(form.datum) }}   
     {{ form_row(form.brochure) }}
 
-    <button type="submit">Neues Projekt erstellen!</button>
-{{ form_end(form) }}
+    <button type="submit" class="btn btn-success">Neues Projekt erstellen!</button>
+    {{ form_end(form) }}
              
-                   {% for flashMessage in app.session.flashbag.get('project') %}
+    {% for flashMessage in app.session.flashbag.get('project') %}
 
-<div class="alert alert-success">
+    <div class="alert alert-success">
     {{ flashMessage }}
-</div>
+    </div>
 
 {% endfor %}     
             </div>
 
-        </div>
-    </div>
+       </div>
 {% endblock %}
 
 {% block stylesheets %}
@@ -71,12 +61,5 @@
 </style>
 {% endblock %}
 
-{% block footer %}
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-		  <div class="container">
-                      <p><h4>All Rights reserved by SwissLink and STVKirchberg.ch</h4></p>
-		  </div>
-    </nav>  
-    
-{% endblock %}
+
 

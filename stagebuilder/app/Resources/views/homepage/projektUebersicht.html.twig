@@ -1,27 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    {% if app.user %}
-    <div id =" uebersichtText">
+{% block header %}
+       
+            <div id =" projekteText">
         <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           
-            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>
+               {% if app.user %}
+            
+            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>       
             <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
             <a class="navbar-brand" href="{{ path('logout') }}">Logout</a>
-
+         
+              {% else %}
+            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>   
+            <a class="navbar-brand" href="{{ path('login') }}">Login</a>
+            <a class="navbar-brand" href="{{ path('user_registration') }}">Registrieren</a> 
+          
+            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
+             {% endif %}
         </div>
       </div>
     </nav>
-    </div> 
-            
+    </div>
+        {% endblock %}
+
+{% block body %}
+    
+    
     <div class="jumbotron container-fluid">
 
     <div class="container container-fluid">
-        <h2>Kürzlich erstellte Projekte</h2>   
+        <h2>Kürzlich erstellte Projekte</h2>  
+        
+        {% if app.user %}
         <a href="{{ path('neues_Projekt') }}"><h3> >> Neues Projekt erstellen << </h3></a>
-
+        {% endif %}
     </div>
         
                         
@@ -51,43 +66,7 @@
             
             
             
- {% else %}
-     
-    <div id =" uebersichtText">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          
-            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>
-            <a class="navbar-brand" href="{{ path('login') }}">Login</a>          
-            <a class="navbar-brand" href="{{ path('user_registration') }}">Registrieren</a>
-            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
 
-        </div>
-      </div>
-    </nav>
-    </div> 
-         
-    <div class="jumbotron container-fluid">
-
-    <div class="container container-fluid">
-        <h2>Kürzlich erstellte Projekte</h2>   
-    </div>
-    <div id="projektliste" class="container">
-        <ol>    {% for projekt in projekte %}
-            <a href="{{path('projekt_ansehen')}}"><h4>{{ projekt.titel }}</h4></a>
-                    <ul>
-                        <li>ID:{{ projekt.id }}</li>
-                        <li>Verantwortliche Person: {{ projekt.ersteller }}</li>
-                        <li>Erstellungsdatum: {{ projekt.datum }}</li>
-                        <img src="{{ asset('uploads/brochures/'~projekt.brochure) }}" width = "300px" heigth = "300px"></img>
-                    </ul>
-                {% endfor %}
-        </ol>
-    </div>
-    </div>
-
- {% endif %}
 {% endblock %}
 
 {% block stylesheets %}
@@ -118,15 +97,3 @@
     }
 </style>
 {% endblock %}
-
-{% block footer %}
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-		  <div class="container">
-                      <p>
-                        <h4>All Rights reserved by SwissLink and STVKirchberg.ch <img width="25px" src="https://yt3.ggpht.com/-CRlPbqWIHoE/AAAAAAAAAAI/AAAAAAAAAAA/P0TdTdhud9s/s100-c-k-no-mo-rj-c0xffffff/photo.jpg"></h4>
-                      </p>
-		  </div>
-    </nav>  
-    
-{% endblock %}
-

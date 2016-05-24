@@ -2,19 +2,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   <div id =" welcomeText">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          
-            <a class="navbar-brand" href="{{ path('login') }}">Login</a>
-            <a class="navbar-brand" href="{{ path('user_registration') }}">Registrieren</a>
-            <a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a>          
-            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
-        </div>
-      </div>
-    </nav>
-    </div>    
+     
             
             <div class="jumbotron container-fluid">
             <div class="container">
@@ -22,16 +10,13 @@
             </div>
 
             <div class="container">
-                    {% if app.user %}
-                            <div id="usercontent">
-                              
-                              <p>
-                                <a href="{{path('neuer_Beitrag')}}">Einen weiteren Beitrag erstellen</a>
-                              </p>
-                              
-                             {% endif %}
+                
+                {% if app.user %}
+                    
+                        <a href="{{path('neuer_Beitrag')}}">Einen weiteren Beitrag erstellen</a>
+                {% endif %}
                         
-                            <div id="beitragsliste">
+                            <div id="beitragsliste"class="container">
                             <ol>
                             {% for beitrag in beitraege %}
                                 <li><a href="{{path('beitrag_ansehen')}}"><h4>{{ beitrag.titel }}</h4></a></li>
@@ -54,8 +39,7 @@
                                 {% endfor %}
                             </ol>
                         </div>
-                            </div>
-
+                           
         
          </div>            
         </div>
