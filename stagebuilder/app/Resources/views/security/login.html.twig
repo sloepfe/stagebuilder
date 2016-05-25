@@ -1,5 +1,30 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+       
+            <div id =" diashowText">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          
+               {% if app.user %}
+            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>
+            <a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a>          
+            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
+            <a class="navbar-brand" href="{{ path('logout') }}">Logout</a>
+         
+              {% else %}
+            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>      
+            <a class="navbar-brand" href="{{ path('user_registration') }}">Registrieren</a> 
+            <a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a> 
+            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
+             {% endif %}
+        </div>
+      </div>
+    </nav>
+    </div>
+        {% endblock %}
+
 {% block body %}
     
     

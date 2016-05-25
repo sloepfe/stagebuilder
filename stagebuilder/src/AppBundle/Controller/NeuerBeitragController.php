@@ -32,7 +32,7 @@ class NeuerBeitragController extends Controller{
  *@Route("/neuerBeitrag", name =  "neuer_Beitrag" )
  */
 
-    public function NeuerBeitragAction(Request $request)
+    public function NeuerBeitragAction(Request $request, $projektNr)
     {
         // build the form
         $beitrag = new Beitrag();
@@ -43,6 +43,8 @@ class NeuerBeitragController extends Controller{
         if($form->isSubmitted() && $form ->isValid()){
             
             
+           
+           
             
               // $file stores the uploaded PDF file
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */

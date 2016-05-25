@@ -20,7 +20,31 @@ class BeitragAnsehenController extends Controller{
 /**
  * @Route("/beitragAnsehen", name = "beitrag_ansehen")
  */
-    public function BeitragAnsehenAction(){
-        return $this->render('beitragAnsehen/beitragAnsehen.html.twig');
+public function BeitragAnsehenAction($beitragNr){
+        
+        
+        $beitraege = $this->getDoctrine()
+        ->getRepository('AppBundle:Beitrag')
+        ->findById($beitragNr);
+        
+        
+        return $this->render('beitragAnsehen/beitragAnsehen.html.twig', array('beitraege' => $beitraege));
     }    
+
+
+    
+ /**
+ *@param Beitrag $beitrag
+ *
+ * @Route("/{id}/entity-remove", requirements={"id" = "\d+"}, name="beitrag_ansehen")
+ * @return RedirectResponse
+ *
+ */
+
+public function DeleteBeitragAction(Beitrag $beitrag){
+    $em = $this->getDoctrine()->getManager();
+    $em->remove($beitragNr);
+    $em->flush();
+
+}
 }

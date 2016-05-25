@@ -41,11 +41,11 @@
         
                         
         <div id="projektliste" class="container">
-            <ol>    {% for projekt in projekte %}
+          {% for projekt in projekte %}
                 <div class="container">
-                    <li>
-                        <a href="{{path('projekt_ansehen')}}"><h4>{{ projekt.titel }}</h4></a>
-                    </li>
+                   
+                        <a href="{{path('projekt_ansehen')}}/{{projekt.id}}"><h4>{{ projekt.titel }}</h4></a>
+                  
                 </div>    
                     <ul>
                         <li>ID:{{ projekt.id }}</li>
@@ -54,7 +54,7 @@
                         <img src="{{ asset('uploads/brochures/'~projekt.brochure) }}" width = "300px" heigth = "300px"></img>
                     </ul>
                 {% endfor %}
-            </ol>
+           
         </div>
                        
     </div>

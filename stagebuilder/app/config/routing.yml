@@ -26,16 +26,22 @@ neues_Projekt:
     defaults: {_controller:AppBundle:NeuesProjekt:neuesProjekt}
     
 neuer_Beitrag:
-    path: /neuerBeitrag
-    defaults: {_controller:AppBundle:NeuerBeitrag:neuerBeitrag}
-
+    path: /neuerBeitrag/{projektNr}
+    defaults: 
+        _controller: AppBundle:NeuerBeitrag:neuerBeitrag
+        projektNr: 1
+        
 projekt_ansehen:
-    path: /projektAnsehen
-    defaults: {_controller:AppBundle:ProjektAnsehen:projektAnsehen}
-    
+    path:   /projektAnsehen/{projektNr}
+    defaults: 
+        _controller: AppBundle:ProjektAnsehen:projektAnsehen
+        projektNr: 1
+        
 beitrag_ansehen:
-    path: /beitragAnsehen
-    defaults: {_controller:AppBundle:BeitragAnsehen:beitragAnsehen}
+    path: /beitragAnsehen/{beitragNr}
+    defaults: 
+        _controller: AppBundle:BeitragAnsehen:beitragAnsehen
+        beitragNr: 1
     
 user_registration:
     path: /register

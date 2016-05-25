@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ProjektUebersichtController extends Controller{
     /**
-     * @Route("/projekt_uebersicht", name="projektUbebersicht")
+     * @Route("/projektUebersicht", name="projekt_uebersicht")
      */
     
      public function ProjektUebersichtAction(Request $request)

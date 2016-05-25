@@ -5,28 +5,44 @@
             <div class="jumbotron container-fluid">
         
           
-       <div class="container">
-                <h1>Beitrag 1</h1>
+      
+               
           
-          
-                <ul>
-                    <li>Name : Beitrag 1</li> 
-                    <li>Verantwortliche Person : Herr Benno Müller</li>
-                    <li>Reihenfolge : 5</li>
-                    <li>Musik : Move It</li>
-                    <li>Material : </li>
-                    <ul>
-                        <li>2 Barren</li>
-                        <li>3 dünne Matten</li>
-                        <li>1 Trampolin</li>
-                    </ul>
-                        <li>Länge : 3.41 min</li>
-                </ul> 
-                        
+          <div id="beitragsliste"class="container">
+              <h2>Beitragsansicht</h2>
+              {% if app.user %}
+                  
+                  <a href="{{path('neuer_Beitrag')}}">Beitrag ändern</a>
+                  
+                {% endif %}
+                            
+                                
+                            {% for beitrag in beitraege %}
+                                
+                                <h3>{{ beitrag.titel }}</h3>
+                                <ul>
+                                <li>ID:{{ beitrag.id }}</li>
+                                <li>Verantwortliche Person: {{ beitrag.ersteller }}</li>
+                                <li>Reihenfolge: {{ beitrag.reihenfolge }}</li>
+                                <li>Dauer: {{ beitrag.dauer }}</li>
+                                <li>Startzeit: {{ beitrag.startzeit }}</li>
+                                <li>Lied: {{ beitrag.Lied }}</li>     
+                                <li>Material: {{ beitrag.materialliste }}</li>
+                                
+                                <img src="{{ asset('uploads/brochures/'~beitrag.frontpic) }}" width = "300px" heigth = "300px"></img>
+                                <img src="{{ asset('uploads/brochures/'~beitrag.leftsidepic) }}" width = "300px" heigth = "300px"></img>
+                                <img src="{{ asset('uploads/brochures/'~beitrag.rightsidepic) }}" width = "300px" heigth = "300px"></img>
+
+
+
+                                </ul>
+                                <a href="{{ path('beitrag_ansehen', {'id': beitrag.id }) }}">Beitrag löschen</a>
+                                {% endfor %}
+                            
+                        </div>
                        
             </div>
 
-        </div>
 {% endblock %}
 
 {% block stylesheets %}

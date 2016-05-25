@@ -20,12 +20,11 @@ class ProjektAnsehenController extends Controller{
 /**
  * @Route("/projektAnsehen", name = "projekt_ansehen")
  */
-    public function ProjektAnsehenAction(){
+    public function ProjektAnsehenAction($projektNr){
         
         $beitraege = $this->getDoctrine()
         ->getRepository('AppBundle:Beitrag')
-        ->findAll();
-        
+        ->findByProjektId($projektNr);
         
         return $this->render('projektAnsehen/projektAnsehen.html.twig', array('beitraege' => $beitraege));
     }    

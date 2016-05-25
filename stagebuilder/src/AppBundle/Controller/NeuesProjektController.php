@@ -55,7 +55,7 @@ class NeuesProjektController extends Controller{
             $brochuresDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads/brochures';
             $file->move($brochuresDir, $fileName);
 
-            // Update the 'brochure' property to store the PDF file name
+            // Update the 'brochure' property to store the file name
             // instead of its contents
             $projekt->setBrochure($fileName);
 

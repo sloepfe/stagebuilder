@@ -25,11 +25,17 @@ class Beitrag {
      */
     private $id;
     
+     /**
+     *@ORM\Column(type="integer")
+     */
+    private $projektId;
+    
+    
     /**
      * @ORM\ManyToOne(targetEntity="Projekt", inversedBy="articles")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
-    private $project;
+    //private $project;
     
     
      /**
@@ -366,5 +372,29 @@ class Beitrag {
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set projektId
+     *
+     * @param integer $projektId
+     *
+     * @return Beitrag
+     */
+    public function setProjektId($projektId)
+    {
+        $this->projektId = $projektId;
+
+        return $this;
+    }
+
+    /**
+     * Get projektId
+     *
+     * @return integer
+     */
+    public function getProjektId()
+    {
+        return $this->projektId;
     }
 }

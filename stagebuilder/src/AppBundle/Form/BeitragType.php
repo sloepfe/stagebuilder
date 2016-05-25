@@ -26,7 +26,8 @@ class BeitragType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-           ->add('titel', TextType::class)
+            ->add('projektId', TextType::class)
+            ->add('titel', TextType::class)
             ->add('ersteller', TextType::class)
             ->add('reihenfolge', TextType::class)
             ->add('dauer', TextType::class)

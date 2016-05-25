@@ -17,9 +17,9 @@
                 {% endif %}
                         
                             <div id="beitragsliste"class="container">
-                            <ol>
+                            
                             {% for beitrag in beitraege %}
-                                <li><a href="{{path('beitrag_ansehen')}}"><h4>{{ beitrag.titel }}</h4></a></li>
+                                <a href="{{path('beitrag_ansehen')}}/{{ beitrag.id}}"><h3>{{ beitrag.titel   }}</h3></a>
                                 <ul>
                                 <li>ID:{{ beitrag.id }}</li>
                                 <li>Verantwortliche Person: {{ beitrag.ersteller }}</li>
@@ -29,7 +29,7 @@
                                 <li>Lied: {{ beitrag.Lied }}</li>     
                                 <li>Material: {{ beitrag.materialliste }}</li>
                                 
-                                <img src="{{ asset('uploads/brochures/'~beitrag.frontpic) }}" width = "300px" heigth = "300px"></img>
+                                <img src="{{ asset('uploads/brochures/'~beitrag.frontpic) }}" width = "300px" heigth = "300px" onclick="zoom"></img>
                                 <img src="{{ asset('uploads/brochures/'~beitrag.leftsidepic) }}" width = "300px" heigth = "300px"></img>
                                 <img src="{{ asset('uploads/brochures/'~beitrag.rightsidepic) }}" width = "300px" heigth = "300px"></img>
 
@@ -37,7 +37,7 @@
 
                                 </ul>
                                 {% endfor %}
-                            </ol>
+                            
                         </div>
                            
         

@@ -53,7 +53,8 @@ class Projekt {
     
     /*public function __construct() {
         $this->articles = new ArrayCollection();
-    } */
+    } 
+     */
     
     
     
@@ -208,4 +209,12 @@ class Projekt {
     {
         return $this->articles;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 }
