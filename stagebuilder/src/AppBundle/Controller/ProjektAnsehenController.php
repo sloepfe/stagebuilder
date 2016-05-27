@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ProjektAnsehenController extends Controller{
 /**
- * @Route("/projektAnsehen", name = "projekt_ansehen")
+ * @Route("/projektAnsehen/{projektNr}", name = "projekt_ansehen")
  */
     public function ProjektAnsehenAction($projektNr){
         

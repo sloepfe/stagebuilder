@@ -44,7 +44,7 @@
           {% for projekt in projekte %}
                 <div class="container">
                    
-                        <a href="{{path('projekt_ansehen')}}/{{projekt.id}}"><h4>{{ projekt.titel }}</h4></a>
+                        <a href="{{path('projekt_ansehen', {'projektNr': projekt.id})}}"><h4>{{ projekt.titel }}</h4></a>
                   
                 </div>    
                     <ul>
