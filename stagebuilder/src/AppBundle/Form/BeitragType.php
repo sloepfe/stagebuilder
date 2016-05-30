@@ -12,7 +12,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 
@@ -23,12 +23,18 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
  */
 class BeitragType extends AbstractType{
     
+    var $projektId;
+    var $user;
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->projektId = $options['id'];
+        $this->user = $options['user'];
+        
         $builder
-            ->add('projektId', TextType::class)
+            ->add('projektId', TextType::class, array( 'data' => $this->projektId))
             ->add('titel', TextType::class)
-            ->add('ersteller', TextType::class)
+            ->add('ersteller', TextType::class, array( 'data'=> $this-> user))
             ->add('reihenfolge', TextType::class)
             ->add('dauer', TextType::class)
             ->add('startzeit', TextType::class)
@@ -44,6 +50,9 @@ class BeitragType extends AbstractType{
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Beitrag',
+            'id' => null,
+            'user'=>null,
+            'projektId'=>null,
         ));
 }
 

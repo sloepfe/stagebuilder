@@ -2,27 +2,33 @@
 
 {% block header %}
        
-            <div id =" diashowText">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          
-               {% if app.user %}
-            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>
-            <a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a>          
-            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
-            <a class="navbar-brand" href="{{ path('logout') }}">Logout</a>
-         
-              {% else %}
+ <div id =" baseText">
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+      
+        {% if app.user %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ path('logout') }}">Logout</a></li>
+                <li><a>{% if is_granted("ROLE_ADMIN") or is_granted("ROLE_USER")%}{{ app.user.username }}{% endif %} <span class="glyphicon glyphicon-user" aria-hidden="true"></span> </a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a></li>
+                <li><a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a>  </li>        
+                <li><a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a></li>
+            </ul>
+            
+                
+        {% else %}
             <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>      
             <a class="navbar-brand" href="{{ path('user_registration') }}">Registrieren</a> 
             <a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a> 
             <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
-             {% endif %}
-        </div>
-      </div>
-    </nav>
+        {% endif %}
+       </div>
     </div>
+   </nav>
+ </div>
         {% endblock %}
 
 {% block body %}
@@ -53,7 +59,7 @@
         is redirected to on success (more details below)
         <input type="hidden" name="_target_path" value="/account" />
     #}
-        <input type="hidden" name="_target_path" value="/" />
+        <input type="hidden" name="_target_path" value="/projektUebersicht" />
 
     <button type="submit" class="btn btn-success">login</button>
     </form>

@@ -6,49 +6,7 @@ welcome:
     path: /
     defaults: {_controller:AppBundle:Welcome:welcome}
        
-
-login:
-    path: /login
-    defaults: {_controller:AppBundle:Security:login}
     
 logout:
     path: /logout
-    
-
-
-projekt_uebersicht:
-    path: /projektUebersicht
-    defaults: {_controller:AppBundle:ProjektUebersicht:projektUebersicht}
-
-    
-neues_Projekt:
-    path: /neuesProjekt
-    defaults: {_controller:AppBundle:NeuesProjekt:neuesProjekt}
-    
-neuer_Beitrag:
-    path: /neuerBeitrag/{projektNr}
-    defaults: 
-        _controller: AppBundle:NeuerBeitrag:neuerBeitrag
-        projektNr: 1
-        
-projekt_ansehen:
-    path:   /projektAnsehen/{projektNr}
-    defaults: 
-        _controller: AppBundle:ProjektAnsehen:projektAnsehen
-        projektNr: 1
-        
-beitrag_ansehen:
-    path: /beitragAnsehen/{beitragNr}
-    defaults: 
-        _controller: AppBundle:BeitragAnsehen:beitragAnsehen
-        beitragNr: 1
-    
-user_registration:
-    path: /register
-    defaults: {_controller:AppBundle:Registration:register}
-    
-
-diashow:
-    path: /diashow
-    defaults: {_controller:AppBundle:Diashow:diashow}
     

@@ -16,12 +16,16 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
  */
 class ProjektType extends AbstractType
 {
+    var $user;
 
  public function buildForm(FormBuilderInterface $builder, array $options)
     {
+     
+     $this->user = $options['user'];
+     
         $builder
             ->add('titel', TextType::class)
-            ->add('ersteller', TextType::class)
+            ->add('ersteller', TextType::class,array( 'data'=> $this-> user))
             ->add('datum', TextType::class)
                 
             ->add('brochure', FileType::class, array('label' => 'Image (JPG-File'));
@@ -32,6 +36,7 @@ class ProjektType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Projekt',
+            'user'=> null,
         ));
     }
 

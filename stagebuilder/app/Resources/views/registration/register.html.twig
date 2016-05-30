@@ -1,4 +1,37 @@
 {% extends 'base.html.twig' %}
+{% block header %}
+       
+ <div id ="registerText">
+   <nav class="navbar navbar-inverse nav    bar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+      
+        {% if app.user %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ path('logout') }}">Logout</a></li>
+                <li><a>{% if is_granted("ROLE_ADMIN") or is_granted("ROLE_USER")%}{{ app.user.username }}{% endif %} <span class="glyphicon glyphicon-user" aria-hidden="true"></span> </a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a></li>
+                            <a class="navbar-brand" href="{{ path('login') }}">Login</a>
+
+                <li><a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a>  </li>        
+                <li><a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a></li>
+            </ul>
+            
+                
+        {% else %}
+            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>  
+                        <a class="navbar-brand" href="{{ path('login') }}">Login</a>
+
+            <a class="navbar-brand" href="{{ path('projekt_uebersicht') }}">Projekte</a> 
+            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
+        {% endif %}
+       </div>
+    </div>
+   </nav>
+ </div>
+        {% endblock %}
 
 {% block body %}
   

@@ -31,14 +31,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class NeuesProjektController extends Controller{
     
     /**
-     * @Route("/neuesProjekt", name="neues_Projekt")
+     * @Route("/neuesProjekt/{user}", name="neues_Projekt")
      */
     
-    public function NeuesProjektAction(Request $request)
+    public function NeuesProjektAction(Request $request, $user)
     {
         // build the form
         $projekt = new Projekt();
-        $form = $this->createForm(ProjektType::class, $projekt);
+        $form = $this->createForm(ProjektType::class, $projekt,  array('user'=> $user));
         
         //handle the submit
         $form->handleRequest($request);
@@ -69,7 +69,7 @@ class NeuesProjektController extends Controller{
             //return $this->redirect($this->generateUrl('app_product_list'));
             //$this->get('session')->getFlashBag()->add('project','Neues Projekt erstellt');
             
-            return $this->redirectToRoute("neuer_Beitrag");
+            return $this->redirectToRoute("projekt_uebersicht");
         }
         
         return $this -> render('neuesProjekt/neuesProjekt.html.twig',array('form' => $form->createView()));

@@ -2,28 +2,32 @@
 
 {% block header %}
        
-            <div id =" projekteText">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          
-               {% if app.user %}
+ <div id =" baseText">
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+      
+        {% if app.user %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ path('logout') }}">Logout</a></li>
+                <li><a>{% if is_granted("ROLE_ADMIN") or is_granted("ROLE_USER")%}{{ app.user.username }}{% endif %} <span class="glyphicon glyphicon-user" aria-hidden="true"></span> </a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a></li>     
+                <li><a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a></li>
+            </ul>
             
-            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>       
-            <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
-            <a class="navbar-brand" href="{{ path('logout') }}">Logout</a>
-         
-              {% else %}
-            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>   
+                
+        {% else %}
+            <a class="navbar-brand" href="{{ path('welcome') }}">Welcome</a>      
             <a class="navbar-brand" href="{{ path('login') }}">Login</a>
             <a class="navbar-brand" href="{{ path('user_registration') }}">Registrieren</a> 
-          
             <a class="navbar-brand" href="http://www.stvkirchberg.ch">STV Kirchberg</a>
-             {% endif %}
-        </div>
-      </div>
-    </nav>
+        {% endif %}
+       </div>
     </div>
+   </nav>
+ </div>
         {% endblock %}
 
 {% block body %}
@@ -31,11 +35,13 @@
     
     <div class="jumbotron container-fluid">
 
-    <div class="container container-fluid">
+    <div class="container container">
         <h2>Kürzlich erstellte Projekte</h2>  
         
         {% if app.user %}
-        <a href="{{ path('neues_Projekt') }}"><h3> >> Neues Projekt erstellen << </h3></a>
+           
+        <a href="{{ path('neues_Projekt', {'user': app.user.username}) }}" class="btn btn-info" >Neues Projekt erstellen</a>
+           
         {% endif %}
     </div>
         
@@ -43,9 +49,9 @@
         <div id="projektliste" class="container">
           {% for projekt in projekte %}
                 <div class="container">
-                   
-                        <a href="{{path('projekt_ansehen', {'projektNr': projekt.id})}}"><h4>{{ projekt.titel }}</h4></a>
-                  
+                    
+                        <a href="{{path('projekt_ansehen', {'projektNr': projekt.id})}}"><h1>{{ projekt.titel }}</h1></a>
+                    
                 </div>    
                     <ul>
                         <li>ID:{{ projekt.id }}</li>
@@ -53,6 +59,13 @@
                         <li>Erstellungsdatum: {{ projekt.datum }}</li>
                         <img src="{{ asset('uploads/brochures/'~projekt.brochure) }}" width = "300px" heigth = "300px"></img>
                     </ul>
+                 {% if app.user %}  
+                 {% if app.user.username==projekt.ersteller %}
+                        <a href="{{ path('project_remove', {'projektNr': projekt.id})}}" class="btn btn-danger">Projekt löschen</a>
+                        <a href="{{  path('neuer_Beitrag', {'projektNr': projekt.id, 'user': app.user.username}) }}" class="btn btn-info">Einen weiteren Beitrag erstellen</a>
+                        
+                {% endif %}
+                {% endif %}
                 {% endfor %}
            
         </div>

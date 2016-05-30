@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
   
             <div class="jumbotron container-fluid">
@@ -10,13 +9,9 @@
           
           <div id="beitragsliste"class="container">
               <h2>Beitragsansicht</h2>
-              {% if app.user %}
-                  
-                  <a href="{{path('neuer_Beitrag')}}">Beitrag ändern</a>
-                  
-                {% endif %}
+             
                             
-                                
+                               
                             {% for beitrag in beitraege %}
                                 
                                 <h3>{{ beitrag.titel }}</h3>
@@ -36,7 +31,16 @@
 
 
                                 </ul>
-                                <a href="{{ path('beitrag_ansehen', {'id': beitrag.id }) }}">Beitrag löschen</a>
+                                 {% if app.user %}
+                                 {% if app.user.username == beitrag.ersteller %}
+                                     
+                                     <p>    
+                                         <a href="{{ path('article_remove', {'beitragNr': beitrag.id , 'projektId': beitrag.projektId}) }}" class="btn btn-danger">Beitrag löschen</a>
+                                     </p>
+                                 
+                                 {% endif %}
+                                 {% endif %}
+
                                 {% endfor %}
                             
                         </div>

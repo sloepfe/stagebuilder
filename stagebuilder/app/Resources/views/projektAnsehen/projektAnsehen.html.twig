@@ -11,15 +11,12 @@
 
             <div class="container">
                 
-                {% if app.user %}
-                    
-                        <a href="{{path('neuer_Beitrag')}}">Einen weiteren Beitrag erstellen</a>
-                {% endif %}
+                
                         
                             <div id="beitragsliste"class="container">
                             
                             {% for beitrag in beitraege %}
-                                <a href="{{path('beitrag_ansehen')}}/{{ beitrag.id}}"><h3>{{ beitrag.titel   }}</h3></a>
+                                <a href="{{path('beitrag_ansehen', {'beitragNr': beitrag.id}) }}"><h3>{{ beitrag.titel }}</h3></a>
                                 <ul>
                                 <li>ID:{{ beitrag.id }}</li>
                                 <li>Verantwortliche Person: {{ beitrag.ersteller }}</li>
@@ -34,9 +31,12 @@
                                 <img src="{{ asset('uploads/brochures/'~beitrag.rightsidepic) }}" width = "300px" heigth = "300px"></img>
 
 
-
+                             
+                                 
                                 </ul>
+                
                                 {% endfor %}
+                                
                             
                         </div>
                            
